@@ -1,0 +1,174 @@
+body {
+    background: linear-gradient(180deg, #f8f5f2 0%, #ffffff 100%);
+    font-family: 'Poppins', sans-serif;
+    color: #2c2c2c;
+}
+
+/* Navbar */
+.navbar-custom {
+    background: white;
+    border-bottom: 1px solid #f1f1f1;
+    padding: 12px 0;
+}
+
+.logo-icon {
+    color: #14B8A6;
+    font-size: 1.3rem;
+}
+
+.logo-text {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #0F172A;
+}
+
+.nav-link {
+    color: #475569 !important;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #14B8A6 !important;
+}
+
+/* Brand button */
+.btn-brand {
+    background-color: #14B8A6;
+    color: white;
+    border-radius: 30px;
+    padding: 6px 18px;
+    border: none;
+    transition: 0.2s ease;
+}
+
+.btn-brand:hover {
+    background-color: #0d9488;
+    transform: translateY(-1px);
+}
+
+/* Cards */
+.listing-card {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    background: white;
+    transition: 0.25s ease;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+.listing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+/* Image */
+.image-wrapper {
+    height: 230px;
+    overflow: hidden;
+}
+
+.listing-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Price */
+.card-price {
+    font-weight: 600;
+    color: #14B8A6;
+}
+
+/* Show Page */
+.show-image-wrapper {
+    height: 420px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.show-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Footer */
+.footer-minimal {
+    background: #ffffff;
+    border-top: 1px solid #f1f1f1;
+    margin-top: 60px;
+}
+
+.footer-brand {
+    font-weight: 600;
+    color: #0F172A;
+}
+
+.navbar-custom {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: white;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+/* Custom Teal Branding */
+.text-teal {
+    color: #12b4b4;
+}
+
+.btn-teal {
+    background-color: #12b4b4;
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-teal:hover {
+    background-color: #0e8f8f;
+    transform: translateY(-2px);
+    color: white;
+}
+
+/* Entrance Animations */
+.animate-fade-in {
+    animation: fadeIn 1.2s ease-out;
+}
+
+.animate-slide-left {
+    animation: slideLeft 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Hover effect for the feature cards */
+.hover-up {
+    transition: transform 0.3s ease;
+}
+
+.hover-up:hover {
+    transform: translateY(-10px);
+}
