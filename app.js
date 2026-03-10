@@ -5,6 +5,8 @@ const path = require("path");
 const methodOverride = require("method-override");
 const Listing = require("./models/listing.js");
 const ejsMate = require("ejs-mate");
+const wrapAsync = require("./utils/wrapAsync.js");
+const ExpressError = require("./utils/expressError.js");
 
 
 app.set("view engine","ejs");
@@ -49,31 +51,27 @@ app.get("/listings",async (req,res)=>{
 })
 
 
-//post new listing
+//create new listing
 
-app.post("/listings",(req,res)=>{
+app.post("/listings",wrapAsync(async (req,res)=>{
     const { listing } = req.body;
     let newListing = new Listing(listing);
-    newListing.save().then(()=>{
-        console.log(`${newListing.title} saved succesfully`);
-        res.redirect("/listings");
-    }).catch(err=>{
-        console.log(err);
-    })
-})
+    await newListing.save();
+    console.log(`${newListing.title} saved succesfully`);
+    res.redirect("/listings");
+}))
 
-//put route 
+//put route (after user press update button)
 
-app.put("/listings/:id", async (req, res) => {
-    const { id } = req.params;
-    const { listing } = req.body;
-    await Listing.findByIdAndUpdate(id, listing);
-    res.redirect(`/listings/${id}`);
-
-})
+app.put("/listings/:id", wrapAsync(async(req, res,next) => {
+        const { id } = req.params;
+        const { listing } = req.body;
+        await Listing.findByIdAndUpdate(id, listing);
+        res.redirect(`/listings/${id}`);
+}))
 
 
-//create new listing form
+//render new listing form
 
 app.get("/listings/new",(req,res)=>{
     res.render("listings/new");
@@ -105,13 +103,24 @@ app.get("/listings/:id/edit",async(req,res)=>{
 
 //delete route 
 
-app.delete("/listings/:id/delete",async(req,res)=>{
+app.delete("/listings/:id",async(req,res)=>{
     const {id} = req.params;
     await Listing.findByIdAndDelete(id);
     console.log(`listing of id ${id} is deleted succcesfully`);
     res.redirect("/listings");
 })
 
+//page not found route 
+
+app.use((req,res,next)=>{
+    next(new ExpressError(404,"Page Not Found"));
+})
+
+// //error handling middleware
+app.use((err,req,res,next)=>{
+    let {statusCode=500 , message="Something went wrong"} = err;
+    res.status(statusCode).send(message);
+})
 
 app.listen(port,()=>{
     console.log(`app is listening at ${port}`);

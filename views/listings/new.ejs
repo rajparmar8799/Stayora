@@ -11,32 +11,43 @@
                     <div class="mb-3">
                         <label class="form-label">Title</label>
                         <input name="listing[title]" class="form-control" required>
+                        <div class="valid-feedback">Looks good!</div>
+                        <div class="invalid-feedback">Please enter valid title</div>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Description</label>
                         <textarea name="listing[description]" class="form-control" rows="4" required></textarea>
+                        <div class="valid-feedback">Looks good!</div>
+                        <div class="invalid-feedback">Please enter a valid description</div>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Image URL</label>
                         <input name="listing[image]" class="form-control">
+                        
                     </div>
 
                     <div class="row">
                         <div class="mb-3 col-md-4">
                             <label class="form-label">Price</label>
-                            <input name="listing[price]" class="form-control" required>
+                            <input name="listing[price]" class="form-control" required type="number">
+                            <div class="valid-feedback">Looks good!</div>
+                            <div class="invalid-feedback">Please enter a valid price</div>
                         </div>
                         <div class="mb-3 col-md-8">
                             <label class="form-label">Location</label>
                             <input name="listing[location]" class="form-control" required>
+                            <div class="valid-feedback">Looks good!</div>
+                            <div class="invalid-feedback">Please enter a valid location</div>
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Country</label>
                         <input name="listing[country]" class="form-control" required>
+                        <div class="valid-feedback">Looks good!</div>
+                        <div class="invalid-feedback">Enter a valid country</div>
                     </div>
 
                     <button class="btn btn-teal w-100 mt-3">Add Listing</button>
